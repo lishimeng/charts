@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tree.fullname" . }}
+  labels:
+    {{- include "tree.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "tree.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "tree.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "tree.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.existingSecret }}
+                key: db.password
+          - name: DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: db.user
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: db.host
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: db.port
+          - name: DB_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: db.database
+          - name: DB_SSL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: db.ssl
+
+          - name: MQTT_BROKER
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: mqtt.broker
+          - name: MQTT_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: mqtt.username
+          - name: MQTT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.existingSecret }}
+                key: mqtt.password
+          - name: MQTT_QOS
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: mqtt.qos
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
