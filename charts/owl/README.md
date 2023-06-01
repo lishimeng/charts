@@ -5,8 +5,8 @@ This chart installs [Owl](https://github.com/lishimeng/owl-messager), an open so
 
 
 ```bash
-$ helm repo add owl https://lishimeng.github.io/charts/
-$ helm install my-release owl/owl
+$ helm repo add alex.li https://lishimeng.github.io/charts/
+$ helm install my-release alex.li/owl
 ```
 
 ## Installing the Chart
@@ -17,7 +17,8 @@ To install the chart with the release name `my-release`:
 $ helm install my-release owl/owl
 ```
 
-The command deploys Owl on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
+The command deploys Owl on the Kubernetes cluster in the default configuration. The Parameters 
+section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
