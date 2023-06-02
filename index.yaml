@@ -3,6 +3,21 @@ entries:
   owl:
   - apiVersion: v2
     appVersion: v0.5.7
+    created: "2023-06-02T10:53:59.787648731Z"
+    description: Message provider
+    digest: c3543bacae76ab90dc348f8a7e775d19efac9d8bf6f44a2d70199e8c741e28b2
+    keywords:
+    - owl
+    - message
+    - email
+    - sms
+    name: owl
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/owl-0.1.6/owl-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: v0.5.7
     created: "2023-06-02T10:23:50.983302539Z"
     description: Message provider
     digest: afb610a86c084cf666adda4c4ee8cb01a36b5d1947b402a15e4ae291fb5f8f4f
@@ -34,6 +49,16 @@ entries:
   tree:
   - apiVersion: v2
     appVersion: v0.2.6
+    created: "2023-06-02T10:53:59.949073975Z"
+    description: IoT server, mqtt, support gateway and sub device.
+    digest: a80494e3abb648e9da5dd23872f3cf736b9d7e3f85f8f2e68c4426f3b3323ed2
+    name: tree
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/tree-0.1.4/tree-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: v0.2.6
     created: "2023-06-02T10:23:51.161492021Z"
     description: IoT server, mqtt, support gateway and sub device.
     digest: 46991f7995fbb1d9e5247515be1d395beb6569381b16faab4381095a9b3bf3c3
@@ -52,4 +77,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-06-02T10:23:51.161503722Z"
+generated: "2023-06-02T10:53:59.949095975Z"
