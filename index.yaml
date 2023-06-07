@@ -63,6 +63,16 @@ entries:
     version: 0.1.4
   tree:
   - apiVersion: v2
+    appVersion: v0.2.7
+    created: "2023-06-07T03:08:51.930518483Z"
+    description: IoT server, mqtt, support gateway and sub device.
+    digest: 92f9c5b50c32bfe390d283438dbdb6857da46e2b51a13b02db6c31bf0ae57604
+    name: tree
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/tree-0.1.6/tree-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
     appVersion: v0.2.6
     created: "2023-06-02T16:52:21.596138915Z"
     description: IoT server, mqtt, support gateway and sub device.
@@ -102,4 +112,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-06-02T16:52:21.596173416Z"
+generated: "2023-06-07T03:08:51.930539285Z"
