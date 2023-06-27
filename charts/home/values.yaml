@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: lishimeng/owl-messager
+  repository: lishimeng/home
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -25,9 +25,9 @@ serviceAccount:
 
 podAnnotations: {}
 
-existingConfigmap: owl
+existingConfigmap: home
 
-existingSecret: owl
+existingSecret: home
 
 podSecurityContext: {}
   # fsGroup: 2000

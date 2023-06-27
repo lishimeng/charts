@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "owl.fullname" . }}
+  name: {{ include "home.fullname" . }}
   labels:
-    {{- include "owl.labels" . | nindent 4 }}
+    {{- include "home.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount}}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "owl.selectorLabels" . | nindent 6 }}
+      {{- include "home.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "owl.selectorLabels" . | nindent 8 }}
+        {{- include "home.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "owl.serviceAccountName" . }}
+      serviceAccountName: {{ include "home.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -52,36 +52,41 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+          - name: WEB_CACHE
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.existingSecret }}
+                key: web.cache
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: {{ .Values.existingSecret }}
-                key: password
+                key: db.password
           - name: DB_USER
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.existingConfigmap }}
-                key: user
+                key: db.user
           - name: DB_HOST
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.existingConfigmap }}
-                key: host
+                key: db.host
           - name: DB_PORT
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.existingConfigmap }}
-                key: port
+                key: db.port
           - name: DB_DATABASE
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.existingConfigmap }}
-                key: database
+                key: db.database
           - name: DB_SSL
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.existingConfigmap }}
-                key: ssl
+                key: db.ssl
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

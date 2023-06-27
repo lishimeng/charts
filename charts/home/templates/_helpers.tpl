@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "owl.name" -}}
+{{- define "home.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "owl.fullname" -}}
+{{- define "home.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "owl.chart" -}}
+{{- define "home.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "owl.labels" -}}
-helm.sh/chart: {{ include "owl.chart" . }}
-{{ include "owl.selectorLabels" . }}
+{{- define "home.labels" -}}
+helm.sh/chart: {{ include "home.chart" . }}
+{{ include "home.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "owl.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "owl.name" . }}
+{{- define "home.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "home.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "owl.serviceAccountName" -}}
+{{- define "home.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "owl.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "home.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

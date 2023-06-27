@@ -1,13 +1,11 @@
 apiVersion: v2
-name: owl
-description: Message provider
+name: home
+description: cms
 type: application
-version: 0.1.7
+version: 0.0.1
 
 keywords:
-  - owl
-  - message
-  - email
-  - sms
+  - home
+  - cms
 
-appVersion: v0.5.7
+appVersion: v0.0.1
