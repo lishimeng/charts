@@ -3,6 +3,19 @@ entries:
   home:
   - apiVersion: v2
     appVersion: v0.0.1
+    created: "2023-06-27T16:12:49.793204992Z"
+    description: cms
+    digest: 69110911421e197f7f381b9fb3dc3f54f995dc02d723ff38d0656a3f3769ceed
+    keywords:
+    - home
+    - cms
+    name: home
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/home-0.0.3/home-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: v0.0.1
     created: "2023-06-27T15:59:01.875755713Z"
     description: cms
     digest: cfc693ae5944f676087e39fe83aa34c5e119d2b0515a9b5df3e1a5c978333c46
@@ -91,6 +104,16 @@ entries:
   passport:
   - apiVersion: v2
     appVersion: v0.0.1
+    created: "2023-06-27T16:12:49.908797621Z"
+    description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/).
+    digest: a2ed437555bb36dd4c0dd3c622c27f773284ef46780194946aee95e95c073d60
+    name: passport
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/passport-0.0.3/passport-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: v0.0.1
     created: "2023-06-27T15:59:02.058568167Z"
     description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/).
     digest: b4d013012d518af25ddb40569e6063792961d295f0d417332cf77a378264a09e
@@ -160,4 +183,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-06-27T15:59:02.058596167Z"
+generated: "2023-06-27T16:12:49.908833021Z"
