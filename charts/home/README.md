@@ -17,7 +17,7 @@ To install the chart with the release name `my-release`:
 $ helm install my-release my_repo/home
 ```
 
-The command deploys Owl on the Kubernetes cluster in the default configuration. The Parameters 
+The command deploys Home on the Kubernetes cluster in the default configuration. The Parameters 
 section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
