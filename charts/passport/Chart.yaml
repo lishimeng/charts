@@ -1,6 +1,6 @@
 apiVersion: v2
 name: passport
-description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/).
+description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
 type: application
 
 # This is the chart version
