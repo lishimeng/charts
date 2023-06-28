@@ -54,7 +54,7 @@ spec:
           env:
           - name: WEB_CACHE
             valueFrom:
-              secretKeyRef:
+              configMapKeyRef:
                 name: {{ .Values.existingSecret }}
                 key: web.cache
           - name: DB_PASSWORD
