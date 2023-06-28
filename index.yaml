@@ -3,6 +3,19 @@ entries:
   home:
   - apiVersion: v2
     appVersion: v0.0.1
+    created: "2023-06-28T03:19:29.041410177Z"
+    description: cms
+    digest: c9eb8ee30c94c848cbb2dd6d8b683a80675d54e8c3100a676eec37dbd6c6d8b4
+    keywords:
+    - home
+    - cms
+    name: home
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/home-0.0.4/home-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: v0.0.1
     created: "2023-06-27T16:12:49.793204992Z"
     description: cms
     digest: 69110911421e197f7f381b9fb3dc3f54f995dc02d723ff38d0656a3f3769ceed
@@ -183,4 +196,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-06-27T16:12:49.908833021Z"
+generated: "2023-06-28T03:19:29.041438878Z"
