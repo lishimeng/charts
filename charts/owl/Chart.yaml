@@ -2,7 +2,7 @@ apiVersion: v2
 name: owl
 description: Message provider
 type: application
-version: 0.1.10
+version: 0.1.11
 
 keywords:
   - owl
@@ -10,4 +10,4 @@ keywords:
   - email
   - sms
 
-appVersion: v0.6.2
+appVersion: v0.7.1
