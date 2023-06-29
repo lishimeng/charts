@@ -19,4 +19,3 @@ To uninstall the chart:
 
     helm delete my-release
 
-#### License MIT
