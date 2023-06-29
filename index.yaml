@@ -56,6 +56,21 @@ entries:
   owl:
   - apiVersion: v2
     appVersion: v0.6.2
+    created: "2023-06-29T07:09:34.895456665Z"
+    description: Message provider
+    digest: 2899c9ed8779cb0fed4c1ce7af7f14bfb70ee25c8a93fdccf6dad1e4756c8f78
+    keywords:
+    - owl
+    - message
+    - email
+    - sms
+    name: owl
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/owl-0.1.10/owl-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
+    appVersion: v0.6.2
     created: "2023-06-29T05:15:57.045081234Z"
     description: Message provider
     digest: aba5fce568638a7af15a537c363a3b51144321ba0505b5b001bc9707ec1b5c4a
@@ -145,6 +160,16 @@ entries:
     - https://github.com/lishimeng/charts/releases/download/owl-0.1.4/owl-0.1.4.tgz
     version: 0.1.4
   passport:
+  - apiVersion: v2
+    appVersion: v0.0.5
+    created: "2023-06-29T07:09:35.190231993Z"
+    description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
+    digest: 7079563d9b1483a2502a020f08a9d2c2b0e2d6f7ce11a16b2e82e0b440f76302
+    name: passport
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/passport-0.0.7/passport-0.0.7.tgz
+    version: 0.0.7
   - apiVersion: v2
     appVersion: v0.0.5
     created: "2023-06-29T05:15:57.203783601Z"
@@ -256,4 +281,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-06-29T05:15:57.203854401Z"
+generated: "2023-06-29T07:09:35.190292093Z"
