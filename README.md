@@ -18,3 +18,5 @@ To install the owl chart:
 To uninstall the chart:
 
     helm delete my-release
+
+#### License MIT
