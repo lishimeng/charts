@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   home:
   - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2023-07-01T16:25:14.397091995Z"
+    description: cms
+    digest: 490e0daa63305e49a9be1dafca12698a6616ea8125efed77cb5fbe54334f1a2f
+    keywords:
+    - home
+    - cms
+    name: home
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/home-0.1.0/home-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: v0.0.1
     created: "2023-06-28T03:19:29.041410177Z"
     description: cms
@@ -54,6 +67,21 @@ entries:
     - https://github.com/lishimeng/charts/releases/download/home-0.0.1/home-0.0.1.tgz
     version: 0.0.1
   owl:
+  - apiVersion: v2
+    appVersion: v0.8.2
+    created: "2023-07-01T16:25:14.589823257Z"
+    description: Message provider
+    digest: a88a9d8422fd765e139ed6f6be21cd08402badd892030d088e11d35fcb518d68
+    keywords:
+    - owl
+    - message
+    - email
+    - sms
+    name: owl
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/owl-0.1.12/owl-0.1.12.tgz
+    version: 0.1.12
   - apiVersion: v2
     appVersion: v0.7.1
     created: "2023-06-29T11:56:59.489287844Z"
@@ -306,4 +334,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-06-30T03:19:05.245271172Z"
+generated: "2023-07-01T16:25:14.590064957Z"
