@@ -52,11 +52,17 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+          - name: WEB_Listen
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.existingConfigmap }}
+                key: web.listen
           - name: WEB_CACHE
             valueFrom:
               configMapKeyRef:
-                name: {{ .Values.existingSecret }}
+                name: {{ .Values.existingConfigmap }}
                 key: web.cache
+
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
