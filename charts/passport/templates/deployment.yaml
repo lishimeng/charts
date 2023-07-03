@@ -115,17 +115,28 @@ spec:
                   name: {{ .Values.existingSecret }}
                   key: token.key
 
-            - name: NOTIFY_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ .Values.existingConfigmap }}
-                  key: notify.host
-
             - name: WEB_LISTEN
               valueFrom:
                 configMapKeyRef:
                   name: {{ .Values.existingConfigmap }}
                   key: web.listen
+
+            - name: NOTIFY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.existingConfigmap }}
+                  key: notify.host
+            - name: NOTIFY_APPKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.existingConfigmap }}
+                  key: notify.appkey
+            - name: NOTIFY_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.existingConfigmap }}
+                  key: notify.secret
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
