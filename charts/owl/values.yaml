@@ -28,16 +28,16 @@ serviceAccount:
 
 config:
   database:
-    password: "vaergv4vasdfaa"
-    user: "tinyorbits"
-    host: "postgresl-postgresql.default.svc.cluster.local"
+    password: ""
+    user: ""
+    host: ""
     port: 5432
-    database: "tinyorbits"
+    database: ""
     ssl: "disable"
   token:
     enable: true
-    issuer: "domain.com"
-    key: "1234asdfrtyuedcvtainch@r&y%ttghu"
+    issuer: ""
+    key: ""
 
 podAnnotations: {}
 
