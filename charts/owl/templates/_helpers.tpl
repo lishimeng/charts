@@ -60,3 +60,20 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{- define "owl.defaultSecret" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "owl.secret" -}}
+{{- default (include "owl.defaultSecret" .) .Values.existingSecret  -}}
+{{- end }}
+
+{{- define "owl.defaultConfigmap" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "owl.configMap" -}}
+{{- default (include "owl.defaultConfigmap" .) .Values.existingConfigmap  -}}
+{{- end }}

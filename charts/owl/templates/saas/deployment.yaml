@@ -1,16 +1,19 @@
+{{- if .Values.components.saas.enable }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "owl.fullname" . }}
+  name: {{ include "owl.fullname" . }}-saas
   labels:
     {{- include "owl.labels" . | nindent 4 }}
+    app.kubernetes.io/component: saas
 spec:
   {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount}}
+  replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
       {{- include "owl.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: saas
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,6 +22,7 @@ spec:
       {{- end }}
       labels:
         {{- include "owl.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: saas
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -31,8 +35,39 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repositorySaas }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "owl.secret" . }}
+                  key: db.password
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.user
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.port
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.database
+            - name: DB_SSL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.ssl
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -51,54 +86,6 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          env:
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.existingSecret }}
-                key: db.password
-          - name: DB_USER
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: db.user
-          - name: DB_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: db.host
-          - name: DB_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: db.port
-          - name: DB_DATABASE
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: db.database
-          - name: DB_SSL
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: db.ssl
-
-          - name: TOKEN_ENABLE
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: token.enable
-          - name: TOKEN_ISSUER
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: token.issuer
-          - name: TOKEN_KEY
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.existingConfigmap }}
-                key: token.key
-
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -111,3 +98,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{- end }}

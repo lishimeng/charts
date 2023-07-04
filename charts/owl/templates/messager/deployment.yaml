@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "owl.fullname" . }}-messager
+  labels:
+    {{- include "owl.labels" . | nindent 4 }}
+    app.kubernetes.io/component: messager
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "owl.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: messager
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "owl.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: messager
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "owl.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repositoryMessager }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "owl.secret" . }}
+                  key: db.password
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.user
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.port
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.database
+            - name: DB_SSL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: db.ssl
+
+            - name: TOKEN_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: token.enable
+            - name: TOKEN_ISSUER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: token.issuer
+            - name: TOKEN_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "owl.secret" . }}
+                  key: token.key
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          {{- if .Values.livenessProbe.enable }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.path }}
+              port: http
+          {{- end }}
+          {{- if .Values.readinessProbe.enable }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.readinessProbe.path }}
+              port: http
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

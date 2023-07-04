@@ -4,8 +4,15 @@
 
 replicaCount: 1
 
+components:
+  messager:
+    enable: true
+  saas:
+    enable: true
+
 image:
-  repository: lishimeng/owl-messager
+  repositoryMessager: lishimeng/owl-messager
+  repositorySaas: lishimeng/owl-sass
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -15,19 +22,28 @@ nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  # Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
   name: ""
+
+config:
+  database:
+    password: "vaergv4vasdfaa"
+    user: "tinyorbits"
+    host: "postgresl-postgresql.default.svc.cluster.local"
+    port: 5432
+    database: "tinyorbits"
+    ssl: "disable"
+  token:
+    enable: true
+    issuer: "domain.com"
+    key: "1234asdfrtyuedcvtainch@r&y%ttghu"
 
 podAnnotations: {}
 
-existingConfigmap: owl
+existingConfigmap:
 
-existingSecret: owl
+existingSecret:
 
 podSecurityContext: {}
   # fsGroup: 2000
