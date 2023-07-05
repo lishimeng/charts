@@ -1,0 +1,29 @@
+{{/*}}
+不指定configmap时,创建默认conigmap
+{{*/}}
+{{- if empty .Values.existingConfigmap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "passport.configMap" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "passport.labels" . | nindent 4 }}
+data:
+  db.user: {{ .Values.config.database.user | quote }}
+  db.host: {{ .Values.config.database.host | quote }}
+  db.ssl: {{ .Values.config.database.ssl | quote }}
+  db.database: {{ .Values.config.database.database | quote }}
+  db.port: {{ .Values.config.database.port | quote }}
+
+  token.enable: {{ .Values.config.token.enable | quote }}
+  token.issuer: {{ .Values.config.token.issuer | quote }}
+
+  redis.addr: {{ .Values.config.redis.addr | quote }}
+  redis.db: {{ .Values.config.redis.db | quote }}
+
+  notify.host: {{ .Values.config.notify.host | quote }}
+  notify.appKey: {{ .Values.config.notify.appKey | quote }}
+
+  web.listen: {{ .Values.config.web.listen | quote }}
+{{- end }}

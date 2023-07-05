@@ -60,3 +60,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "passport.defaultSecret" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "passport.secret" -}}
+{{- default (include "passport.defaultSecret" .) .Values.existingSecret  -}}
+{{- end }}
+
+{{- define "passport.defaultConfigmap" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "passport.configMap" -}}
+{{- default (include "passport.defaultConfigmap" .) .Values.existingConfigmap  -}}
+{{- end }}
