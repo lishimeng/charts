@@ -60,3 +60,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "home.defaultSecret" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "home.secret" -}}
+{{- default (include "home.defaultSecret" .) .Values.existingSecret  -}}
+{{- end }}
+
+{{- define "home.defaultConfigmap" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "home.configMap" -}}
+{{- default (include "home.defaultConfigmap" .) .Values.existingConfigmap  -}}
+{{- end }}

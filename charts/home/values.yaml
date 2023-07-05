@@ -10,6 +10,18 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+config:
+  database:
+    password: ""
+    user: ""
+    host: ""
+    port: 5432
+    database: ""
+    ssl: "disable"
+  web:
+    listen: ":80"
+    cache: 0
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -25,9 +37,9 @@ serviceAccount:
 
 podAnnotations: {}
 
-existingConfigmap: home
+existingConfigmap:
 
-existingSecret: home
+existingSecret:
 
 podSecurityContext: {}
   # fsGroup: 2000
