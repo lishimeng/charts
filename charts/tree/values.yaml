@@ -10,13 +10,31 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+config:
+  database:
+    password: ""
+    user: ""
+    host: ""
+    port: 5432
+    database: ""
+    ssl: "disable"
+  token:
+    enable: true
+    issuer: ""
+    key: ""
+  mqtt:
+    broker: ""
+    username: ""
+    password: ""
+    qos: 1
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-existingConfigmap: tree
+existingConfigmap:
 
-existingSecret: tree
+existingSecret:
 
 serviceAccount:
   # Specifies whether a service account should be created

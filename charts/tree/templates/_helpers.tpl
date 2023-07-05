@@ -60,3 +60,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "tree.defaultSecret" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "tree.secret" -}}
+{{- default (include "tree.defaultSecret" .) .Values.existingSecret  -}}
+{{- end }}
+
+{{- define "tree.defaultConfigmap" -}}
+{{- .Release.Name -}}
+{{- end }}
+
+{{- define "tree.configMap" -}}
+{{- default (include "tree.defaultConfigmap" .) .Values.existingConfigmap  -}}
+{{- end }}
