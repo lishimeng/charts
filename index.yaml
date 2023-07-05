@@ -3,6 +3,19 @@ entries:
   home:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-07-05T11:47:47.284537317Z"
+    description: cms
+    digest: edc6a153d3e3398e274cd19a51e1885ffde2dcb87e92d9dc416f9e725f25cf6c
+    keywords:
+    - home
+    - cms
+    name: home
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/home-0.1.1/home-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2023-07-01T16:25:14.397091995Z"
     description: cms
     digest: 490e0daa63305e49a9be1dafca12698a6616ea8125efed77cb5fbe54334f1a2f
@@ -67,6 +80,21 @@ entries:
     - https://github.com/lishimeng/charts/releases/download/home-0.0.1/home-0.0.1.tgz
     version: 0.0.1
   owl:
+  - apiVersion: v2
+    appVersion: v0.8.2
+    created: "2023-07-05T11:47:47.449584273Z"
+    description: Message provider
+    digest: 572d7515920b1218e06e7bff3dc9ae559d8c1026393f657a378e9a2439185feb
+    keywords:
+    - owl
+    - message
+    - email
+    - sms
+    name: owl
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/owl-0.2.2/owl-0.2.2.tgz
+    version: 0.2.2
   - apiVersion: v2
     appVersion: v0.8.2
     created: "2023-07-04T17:59:15.103995746Z"
@@ -235,6 +263,16 @@ entries:
   passport:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-07-05T11:47:47.617364935Z"
+    description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
+    digest: 59a14f9f15656ba42c6d003738379e5b0c8125e9886f4506dd70c4d0405e2956
+    name: passport
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/passport-0.1.1/passport-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2023-07-03T08:11:54.763339854Z"
     description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
     digest: 2b10db43fe28acd930ed36a8647136bcbdf6ed8252fb6497f7f89e8933dc0e8b
@@ -336,6 +374,16 @@ entries:
   tree:
   - apiVersion: v2
     appVersion: v0.2.7
+    created: "2023-07-05T11:47:47.749986821Z"
+    description: IoT server, mqtt, support gateway and sub device.
+    digest: ab12bc03cdcb8d95b8774089fd6ede1a0bbd6f708cea846bb848f749b5a40750
+    name: tree
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/tree-0.1.7/tree-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: v0.2.7
     created: "2023-06-07T03:08:51.930518483Z"
     description: IoT server, mqtt, support gateway and sub device.
     digest: 92f9c5b50c32bfe390d283438dbdb6857da46e2b51a13b02db6c31bf0ae57604
@@ -384,4 +432,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-07-04T17:59:15.104061447Z"
+generated: "2023-07-05T11:47:47.750093021Z"
