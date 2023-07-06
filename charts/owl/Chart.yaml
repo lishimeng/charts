@@ -2,7 +2,7 @@ apiVersion: v2
 name: owl
 description: Message provider
 type: application
-version: 0.3.0
+version: 0.3.1
 
 keywords:
   - owl
