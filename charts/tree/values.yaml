@@ -32,9 +32,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-existingConfigmap:
+existingConfigmap: ""
 
-existingSecret:
+existingSecret: ""
 
 serviceAccount:
   # Specifies whether a service account should be created

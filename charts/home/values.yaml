@@ -37,9 +37,9 @@ serviceAccount:
 
 podAnnotations: {}
 
-existingConfigmap:
+existingConfigmap: ""
 
-existingSecret:
+existingSecret: ""
 
 podSecurityContext: {}
   # fsGroup: 2000
