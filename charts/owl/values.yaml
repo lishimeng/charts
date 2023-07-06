@@ -7,12 +7,12 @@ replicaCount: 1
 components:
   messager:
     enable: true
-  saas:
+  console:
     enable: true
 
 image:
   repositoryMessager: lishimeng/owl-messager
-  repositorySaas: lishimeng/owl-sass
+  repositoryConsole: lishimeng/owl-console
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -41,9 +41,9 @@ config:
 
 podAnnotations: {}
 
-existingConfigmap:
+existingConfigmap: ""
 
-existingSecret:
+existingSecret: ""
 
 podSecurityContext: {}
   # fsGroup: 2000

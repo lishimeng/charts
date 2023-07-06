@@ -1,11 +1,11 @@
-{{- if .Values.components.saas.enable }}
+{{- if .Values.components.console.enable }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "owl.fullname" . }}-saas
+  name: {{ include "owl.fullname" . }}-console
   labels:
     {{- include "owl.labels" . | nindent 4 }}
-    app.kubernetes.io/component: saas
+    app.kubernetes.io/component: console
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,5 +15,5 @@ spec:
       name: http
   selector:
     {{- include "owl.selectorLabels" . | nindent 4 }}
-    app.kubernetes.io/component: saas
+    app.kubernetes.io/component: console
 {{- end }}
