@@ -495,4 +495,18 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/tree-0.1.2/tree-0.1.2.tgz
     version: 0.1.2
-generated: "2023-07-06T09:10:29.295941349Z"
+  zoo:
+  - apiVersion: v2
+    appVersion: v0.2.1
+    created: "2023-07-10T09:17:30.635922884Z"
+    description: HomePage View
+    digest: 877db247c275d2b452f62b0fa6a33aa084a47c4aa0272024f070d1c1628b8786
+    keywords:
+    - HomePage
+    - cms
+    name: zoo
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
+    version: 0.2.0
+generated: "2023-07-10T09:17:30.635990784Z"
