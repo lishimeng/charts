@@ -1,11 +1,11 @@
 apiVersion: v2
-name: home
+name: zoo
 description: cms
 type: application
 version: 0.1.2
 
 keywords:
-  - home
+  - HomePage
   - cms
 
 appVersion: v0.1.0

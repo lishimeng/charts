@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "home.fullname" . }}
+  name: {{ include "zoo.fullname" . }}
   labels:
-    {{- include "home.labels" . | nindent 4 }}
+    {{- include "zoo.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount}}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "home.selectorLabels" . | nindent 6 }}
+      {{- include "zoo.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "home.selectorLabels" . | nindent 8 }}
+        {{- include "zoo.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "home.serviceAccountName" . }}
+      serviceAccountName: {{ include "zoo.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -55,43 +55,48 @@ spec:
           - name: WEB_Listen
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: web.listen
           - name: WEB_CACHE
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: web.cache
+          - name: WEB_WEBSITEID
+            valueFrom:
+              configMapKeyRef:
+                name: {{ include "zoo.configMap" . }}
+                key: web.webSiteId
 
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ include "home.secret" . }}
+                name: {{ include "zoo.secret" . }}
                 key: db.password
           - name: DB_USER
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: db.user
           - name: DB_HOST
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: db.host
           - name: DB_PORT
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: db.port
           - name: DB_DATABASE
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: db.database
           - name: DB_SSL
             valueFrom:
               configMapKeyRef:
-                name: {{ include "home.configMap" . }}
+                name: {{ include "zoo.configMap" . }}
                 key: db.ssl
       {{- with .Values.nodeSelector }}
       nodeSelector:

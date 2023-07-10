@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: lishimeng/home
+  repository: lishimeng/zoo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -20,6 +20,7 @@ config:
     ssl: "disable"
   web:
     listen: ":80"
+    webSiteId: 0
     cache: 0
 
 imagePullSecrets: []
