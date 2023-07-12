@@ -1,0 +1,9 @@
+apiVersion: v2
+name: tabby
+description: File Explorer
+
+type: application
+
+version: 1.0.2
+
+appVersion: "v1.0.2"

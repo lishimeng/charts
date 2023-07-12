@@ -1,0 +1,15 @@
+{{/*}}
+不指定configmap时,创建默认conigmap
+{{*/}}
+{{- if empty .Values.existingConfigmap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "tabby.configMap" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "tabby.labels" . | nindent 4 }}
+data:
+  web.listen: {{ .Values.config.web.listen | quote }}
+
+{{- end }}

@@ -1,0 +1,22 @@
+{{/*}}
+不指定configmap时,创建默认conigmap
+{{*/}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "configmap-nginx-resource"
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "tabby.labels" . | nindent 4 }}
+data:
+  default.conf: |
+    server {
+      listen       80;
+      listen  [::]:80;
+      server_name  localhost;
+
+      location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;
+      }
+    }
