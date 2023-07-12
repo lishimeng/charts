@@ -305,6 +305,16 @@ entries:
     version: 0.1.4
   passport:
   - apiVersion: v2
+    appVersion: v0.2.1
+    created: "2023-07-12T11:12:46.443323134Z"
+    description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
+    digest: 6b3f5311136190fba76890e5cd8cc70b01ee201bde9c40bd69c424af99268b4f
+    name: passport
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/passport-0.2.1/passport-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     appVersion: v0.2.0
     created: "2023-07-10T11:11:37.288261669Z"
     description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
@@ -434,6 +444,17 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/passport-0.0.1/passport-0.0.1.tgz
     version: 0.0.1
+  tabby:
+  - apiVersion: v2
+    appVersion: v1.0.2
+    created: "2023-07-12T11:12:46.608433298Z"
+    description: File Explorer
+    digest: e82ad4c1f1b7f1d88ea8a37861a2ba5eed8822e7c13b2be06061368e00e962e7
+    name: tabby
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/tabby-1.0.2/tabby-1.0.2.tgz
+    version: 1.0.2
   tree:
   - apiVersion: v2
     appVersion: v0.2.7
@@ -519,4 +540,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-07-10T11:11:37.288672285Z"
+generated: "2023-07-12T11:12:46.608596296Z"
