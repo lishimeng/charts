@@ -1,4 +1,4 @@
-Owl Messager Helm charts
+Tabby File manager Helm charts
 ===============================================
 
 This chart installs [Tabby](https://github.com/lishimeng/tabby), an open source File Manager.
@@ -17,7 +17,7 @@ To install the chart with the release name `my-release`:
 $ helm install my-release my_repo/tabby
 ```
 
-The command deploys Owl on the Kubernetes cluster in the default configuration. The Parameters 
+The command deploys Tabby on the Kubernetes cluster in the default configuration. The Parameters 
 section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
