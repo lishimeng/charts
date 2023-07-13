@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "tabby.fullname" . }}-messager
+  name: {{ include "tabby.fullname" . }}-resource
   labels:
     {{- include "tabby.labels" . | nindent 4 }}
-    app.kubernetes.io/component: messager
+    app.kubernetes.io/component: resource
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -14,4 +14,4 @@ spec:
       name: http
   selector:
     {{- include "tabby.selectorLabels" . | nindent 4 }}
-    app.kubernetes.io/component: messager
+    app.kubernetes.io/component: resource
