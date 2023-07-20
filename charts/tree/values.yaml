@@ -18,10 +18,6 @@ config:
     port: 5432
     database: ""
     ssl: "disable"
-  token:
-    enable: true
-    issuer: ""
-    key: ""
   mqtt:
     broker: ""
     username: ""
