@@ -27,6 +27,7 @@ serviceAccount:
   name: ""
 
 config:
+  # database configuration
   database:
     password: ""
     user: ""
@@ -34,10 +35,14 @@ config:
     port: 5432
     database: ""
     ssl: "disable"
+  # token configuration
   token:
     enable: true
     issuer: ""
     key: ""
+  console:
+    token:
+      provider: ""
 
 podAnnotations: {}
 

@@ -18,4 +18,6 @@ data:
 
   token.enable: {{ .Values.config.token.enable | quote }}
   token.issuer: {{ .Values.config.token.issuer | quote }}
+
+  console.tokenProvider: {{ .Values.config.console.token.provider | quote }}
 {{- end }}

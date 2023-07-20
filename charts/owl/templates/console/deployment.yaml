@@ -68,6 +68,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "owl.configMap" . }}
                   key: db.ssl
+            - name: CONSOLE_TOKENPROVIDER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: console.tokenProvider
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
