@@ -109,6 +109,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "passport.configMap" . }}
                   key: token.issuer
+            - name: TOKEN_TTL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: token.ttl
             - name: TOKEN_KEY
               valueFrom:
                 secretKeyRef:

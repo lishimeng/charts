@@ -19,6 +19,7 @@ config:
     enable: true
     issuer: ""
     key: ""
+    ttl: "2"
   redis:
     addr: ""
     password: ""

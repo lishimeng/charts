@@ -16,8 +16,9 @@ data:
   db.database: {{ .Values.config.database.database | quote }}
   db.port: {{ .Values.config.database.port | quote }}
 
-  token.enable: {{ .Values.config.token.enable | quote }}
   token.issuer: {{ .Values.config.token.issuer | quote }}
+  token.ttl: {{ .Values.config.token.ttl | quote }}
+  token.enable: {{ .Values.config.token.enable | quote }}
 
   redis.addr: {{ .Values.config.redis.addr | quote }}
   redis.db: {{ .Values.config.redis.db | quote }}
