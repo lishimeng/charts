@@ -62,6 +62,16 @@ entries:
     version: 0.3.3
   passport:
   - apiVersion: v2
+    appVersion: v0.2.4
+    created: "2023-07-25T10:06:58.249784644Z"
+    description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
+    digest: 8f858467d5a7f98ff753c4b24076671247846ec5940a888420dc914884066f8e
+    name: passport
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/passport-0.2.4/passport-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v2
     appVersion: v0.2.3
     created: "2023-07-25T08:31:05.317150226Z"
     description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
@@ -247,4 +257,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-07-25T08:31:05.317191126Z"
+generated: "2023-07-25T10:06:58.249937645Z"
