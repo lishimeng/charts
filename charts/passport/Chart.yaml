@@ -4,6 +4,6 @@ description: Passport. Sigh_up, Sigh_in, MFA(Phone/Email/APNS/WeChat).
 type: application
 
 # This is the chart version
-version: 0.2.1
+version: 0.2.2
 
-appVersion: "v0.2.1"
+appVersion: "v0.2.2"
