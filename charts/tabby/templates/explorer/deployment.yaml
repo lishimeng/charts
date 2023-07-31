@@ -43,6 +43,8 @@ spec:
           env:
             - name: FILESYSTEM_ROOT
               value: {{ .Values.config.explorer.fs }}
+            - name: FILESYSTEM_DOMAIN
+              value: {{ .Values.config.web.domain }}
           volumeMounts:
             - name: approot
               mountPath: {{ .Values.config.explorer.fs }}

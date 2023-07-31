@@ -18,6 +18,7 @@ existingClaim: "static"
 config:
   web:
     listen: ":80"
+    domain: ""
   explorer:
     fs: "/var/tabby/"
 
