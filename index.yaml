@@ -123,6 +123,16 @@ entries:
     version: 0.2.0
   tabby:
   - apiVersion: v2
+    appVersion: v1.0.4
+    created: "2023-07-31T08:17:14.779024598Z"
+    description: File Explorer
+    digest: cbab5bfb34cd8dd777a131bec665bc01218333d2aa2fec10814e22ed15f17376
+    name: tabby
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/tabby-1.0.6/tabby-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
     appVersion: v1.0.3
     created: "2023-07-18T10:24:39.823670304Z"
     description: File Explorer
@@ -280,4 +290,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-07-27T07:07:20.466300011Z"
+generated: "2023-07-31T08:17:14.779099899Z"
