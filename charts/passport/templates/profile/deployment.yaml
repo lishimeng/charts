@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "passport.fullname" . }}
+  name: {{ include "passport.fullname" . }}-profile
   labels:
     {{- include "passport.labels" . | nindent 4 }}
+    app.kubernetes.io/component: profile
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount}}
@@ -11,6 +12,7 @@ spec:
   selector:
     matchLabels:
       {{- include "passport.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: profile
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,6 +21,7 @@ spec:
       {{- end }}
       labels:
         {{- include "passport.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: profile
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -31,7 +34,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository.profile }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -82,22 +85,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "passport.configMap" . }}
                   key: db.ssl
-
-            - name: REDIS_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "passport.configMap" . }}
-                  key: redis.addr
-            - name: REDIS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "passport.secret" . }}
-                  key: redis.password
-            - name: REDIS_DB
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "passport.configMap" . }}
-                  key: redis.db
 
             - name: TOKEN_ENABLE
               valueFrom:

@@ -1,0 +1,159 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "passport.fullname" . }}-passport
+  labels:
+    {{- include "passport.labels" . | nindent 4 }}
+    app.kubernetes.io/component: passport
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount}}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "passport.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: passport
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "passport.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: passport
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "passport.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository.passport }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          {{- if .Values.livenessProbe.enable }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.path }}
+              port: http
+          {{- end }}
+          {{- if .Values.readinessProbe.enable }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.readinessProbe.path }}
+              port: http
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "passport.secret" . }}
+                  key: db.password
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: db.user
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: db.host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: db.port
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: db.database
+            - name: DB_SSL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: db.ssl
+
+            - name: REDIS_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: redis.addr
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "passport.secret" . }}
+                  key: redis.password
+            - name: REDIS_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: redis.db
+
+            - name: TOKEN_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: token.enable
+            - name: TOKEN_ISSUER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: token.issuer
+            - name: TOKEN_TTL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: token.ttl
+            - name: TOKEN_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "passport.secret" . }}
+                  key: token.key
+
+            - name: WEB_LISTEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: web.listen
+
+            - name: NOTIFY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: notify.host
+            - name: NOTIFY_APPKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "passport.configMap" . }}
+                  key: notify.appKey
+            - name: NOTIFY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "passport.secret" . }}
+                  key: notify.secret
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
