@@ -14,6 +14,17 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/home-0.1.2/home-0.1.2.tgz
     version: 0.1.2
+  oauth2:
+  - apiVersion: v2
+    appVersion: v1.2.1
+    created: "2023-08-12T05:37:27.786114504Z"
+    description: oauth2 provider
+    digest: 62da20c8998a4460119def5deb35f59ca5ac3822586b2d62b8ecfcb907160b76
+    name: oauth2
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/oauth2-1.0.0/oauth2-1.0.0.tgz
+    version: 1.0.0
   owl:
   - apiVersion: v2
     appVersion: v0.10.1
@@ -340,4 +351,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-08-08T09:05:58.002915426Z"
+generated: "2023-08-12T05:37:27.786256403Z"
