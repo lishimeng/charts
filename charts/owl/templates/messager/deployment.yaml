@@ -83,6 +83,18 @@ spec:
                 secretKeyRef:
                   name: {{ include "owl.secret" . }}
                   key: token.key
+
+            - name: SENDER_STRATEGY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: sender.strategy
+            - name: SENDER_BUFF
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "owl.configMap" . }}
+                  key: sender.buff
+
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

@@ -40,6 +40,9 @@ config:
     enable: true
     issuer: ""
     key: ""
+  sender:
+    strategy: 0
+    buff: 0
   console:
     token:
       provider: ""

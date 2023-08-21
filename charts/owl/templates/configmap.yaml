@@ -19,5 +19,8 @@ data:
   token.enable: {{ .Values.config.token.enable | quote }}
   token.issuer: {{ .Values.config.token.issuer | quote }}
 
+  sender.strategy: {{ .Values.config.sender.strategy | quote }}
+  sender.buff: {{ .Values.config.sender.buff | quote }}
+
   console.tokenProvider: {{ .Values.config.console.token.provider | quote }}
 {{- end }}
