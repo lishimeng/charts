@@ -27,6 +27,21 @@ entries:
     version: 1.0.0
   owl:
   - apiVersion: v2
+    appVersion: v0.10.3
+    created: "2023-08-22T10:28:31.140132898Z"
+    description: Message provider
+    digest: d7754814bca19afb966d59e306a062fdc23b06ce495d9e58a2d97d2fecc331ef
+    keywords:
+    - owl
+    - message
+    - email
+    - sms
+    name: owl
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/owl-0.4.3/owl-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
     appVersion: v0.10.2
     created: "2023-08-21T10:51:26.726558709Z"
     description: Message provider
@@ -416,4 +431,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-08-21T10:51:26.72664602Z"
+generated: "2023-08-22T10:28:31.1403181Z"
