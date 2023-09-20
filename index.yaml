@@ -406,6 +406,19 @@ entries:
     version: 0.1.2
   zoo:
   - apiVersion: v2
+    appVersion: v0.4.0
+    created: "2023-09-20T09:02:12.27001465Z"
+    description: HomePage View
+    digest: ac6abc0f11ad16d1e11b6fd221cde40efbf65e07692829975f59f68a1e3c9847
+    keywords:
+    - HomePage
+    - cms
+    name: zoo
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/zoo-0.4.0/zoo-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: v0.3.0
     created: "2023-09-12T10:39:54.085126128Z"
     description: HomePage View
@@ -444,4 +457,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-09-12T10:39:54.085212428Z"
+generated: "2023-09-20T09:02:12.270086849Z"
