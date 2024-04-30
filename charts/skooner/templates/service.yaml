@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "skooner.fullname" . }}
+  labels:
+    namespace: kube-system
+    {{- include "skooner.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 4654
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "skooner.selectorLabels" . | nindent 4 }}
