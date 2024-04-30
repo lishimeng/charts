@@ -278,6 +278,17 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/passport-0.2.0/passport-0.2.0.tgz
     version: 0.2.0
+  skooner:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-04-30T07:07:12.680417902Z"
+    description: Skooner Helm chart for Kubernetes
+    digest: 8697e1b435a68ee0def074221068da807d9b0cd627f0b44ff650b3b2a40e343b
+    name: skooner
+    type: application
+    urls:
+    - https://github.com/lishimeng/charts/releases/download/skooner-1.1.0/skooner-1.1.0.tgz
+    version: 1.1.0
   tabby:
   - apiVersion: v2
     appVersion: v1.0.4
@@ -473,4 +484,4 @@ entries:
     urls:
     - https://github.com/lishimeng/charts/releases/download/zoo-0.2.0/zoo-0.2.0.tgz
     version: 0.2.0
-generated: "2023-10-26T09:33:10.951878965Z"
+generated: "2024-04-30T07:07:12.68049204Z"
